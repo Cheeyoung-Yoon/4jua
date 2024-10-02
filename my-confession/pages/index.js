@@ -35,8 +35,13 @@ export default function Home() {
       )}
       {/* Floating Hearts */}
       <div className="hearts">
-        {[...Array(15)].map((_, index) => (
-          <div key={index} className="heart" style={{ animationDelay: `${Math.random() * 10}s` }}></div>
+        {/* Only 3 initial hearts with random positions */}
+        {[...Array(3)].map((_, index) => (
+          <div key={index} className="heart" style={{ left: `${Math.random() * 90}vw`, animationDelay: `${Math.random() * 10}s` }}></div>
+        ))}
+        {/* Increased number of hearts floating */}
+        {[...Array(5)].map((_, index) => (
+          <div key={index + 3} className="heart" style={{ left: `${Math.random() * 90}vw`, animationDelay: `${Math.random() * 10}s` }}></div>
         ))}
       </div>
 
@@ -103,7 +108,7 @@ export default function Home() {
           width: 50px;
           height: 50px;
           background-color: red;
-          transform: rotate(-45deg);
+          transform: rotate(-45deg); /* Rotate to make it a heart shape */
           margin: 20px; /* Some margin for spacing */
           animation: float 10s infinite; /* Apply float animation */
         }
@@ -135,11 +140,6 @@ export default function Home() {
             transform: translateY(-100vh) scale(0.8);
           }
         }
-        /* Adjust heart positions */
-        .heart:nth-child(1) { left: 10%; }
-        .heart:nth-child(3) { left: 50%; }
-        .heart:nth-child(5) { left: 90%; }
-
       `}</style>
     </div>
   );
