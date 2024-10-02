@@ -35,14 +35,16 @@ export default function Home() {
       )}
       {/* Floating Hearts */}
       <div className="hearts">
-        {/* Only 3 initial hearts with random positions */}
-        {[...Array(3)].map((_, index) => (
-          <div key={index} className="heart" style={{ left: `${Math.random() * 90}vw`, animationDelay: `${Math.random() * 10}s` }}></div>
-        ))}
-        {/* Increased number of hearts floating */}
-        {[...Array(5)].map((_, index) => (
-          <div key={index + 3} className="heart" style={{ left: `${Math.random() * 90}vw`, animationDelay: `${Math.random() * 10}s` }}></div>
-        ))}
+        {/* Fixed initial hearts */}
+        <div className="heart" style={{ left: '10%', top: '20%' }}></div>
+        <div className="heart" style={{ left: '20%', top: '10%' }}></div>
+        <div className="heart" style={{ left: '50%', top: '30%' }}></div>
+        <div className="heart" style={{ left: '90%', top: '10%' }}></div>
+        <div className="heart" style={{ left: '80%', top: '10%' }}></div>
+        <div className="heart" style={{ left: '10%', top: '50%' }}></div>
+        <div className="heart" style={{ left: '90%', top: '70%' }}></div>
+
+        {/* Increased number of randomly floating hearts */}
       </div>
 
       <style jsx>{`
