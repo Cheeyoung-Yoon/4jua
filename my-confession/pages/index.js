@@ -18,13 +18,13 @@ export default function Home() {
         <div className="letter">
           <p>너에게 편지를 하나 쓰고 싶었는데,,, 뭐가 가장 나스럽고 또 내가 가장 예쁜 정성을 쏟을 수 있을지에 대해 고민을 해봤어...</p>
           <p>내가 글솜씨가 좋지 않고... 편지도 잘 안 써봐서 잘은 못쓰지만!</p>
-          <p>9월 7일...</p> 
-          <p>사당에서 처음 만나서 벌벌 떨던 너... 사람 이 너무 순하고 착해보였어</p>
+          <p>9월 7일...</p>
+          <p>사당에서 처음 만나서 벌벌 떨던 너... 사람이 너무 순하고 착해보였어</p>
           <p>9월 16일</p>
-          <p>두번째로 만날 때는 안떨고 나에게 장난도 치던 너... 사람 이 밝고 해맑아 보였어</p>
-          <p>9월 17일</p> 
+          <p>두번째로 만날 때는 안떨고 나에게 장난도 치던 너... 사람이 밝고 해맑아 보였어</p>
+          <p>9월 17일</p>
           <p>책바에서 종이접기를 하는 나를 보는 너의 모습 이 사람이 왜 초등학교 선생님을 했고, 사랑이 넘치는 사람이라는 걸 느꼈어</p>
-          <p>9월 21일</p> 
+          <p>9월 21일</p>
           <p>부산에서 돌아와 피곤함에 찌든 나.... 사실 이날... 나도 고민이 많았고, 너가 먼저 이야기를 꺼내주어서 고마웠어.</p>
           <p>너의 한마디, 답변....&quot;과거는 서로 달랐지만, 현재와 미래가 저는 중요하다 생각해요&quot; 이 말이 나는 마음의 결정을 하게 된 거 같아</p>
           <p>9월 28일</p>
@@ -35,7 +35,7 @@ export default function Home() {
       )}
       {/* Floating Hearts */}
       <div className="hearts">
-        {[...Array(8)].map((_, index) => ( // Change from 10 to 8
+        {[...Array(15)].map((_, index) => (
           <div key={index} className="heart" style={{ animationDelay: `${Math.random() * 10}s` }}></div>
         ))}
       </div>
@@ -103,8 +103,9 @@ export default function Home() {
           width: 50px;
           height: 50px;
           background-color: red;
-          transform: rotate(45deg);
+          transform: rotate(-45deg);
           margin: 20px; /* Some margin for spacing */
+          animation: float 10s infinite; /* Apply float animation */
         }
         .heart:before,
         .heart:after {
@@ -134,9 +135,7 @@ export default function Home() {
             transform: translateY(-100vh) scale(0.8);
           }
         }
-        .heart {
-          animation: float 10s infinite;
-        }
+        /* Adjust heart positions */
         .heart:nth-child(1) { left: 10%; }
         .heart:nth-child(2) { left: 30%; }
         .heart:nth-child(3) { left: 50%; }
@@ -145,7 +144,13 @@ export default function Home() {
         .heart:nth-child(6) { left: 15%; }
         .heart:nth-child(7) { left: 35%; }
         .heart:nth-child(8) { left: 55%; }
-        /* Removed the nth-child(9) and nth-child(10) styles */
+        .heart:nth-child(9) { left: 80%; }
+        .heart:nth-child(10) { left: 20%; }
+        .heart:nth-child(11) { left: 40%; }
+        .heart:nth-child(12) { left: 60%; }
+        .heart:nth-child(13) { left: 75%; }
+        .heart:nth-child(14) { left: 5%; }
+        .heart:nth-child(15) { left: 95%; }
       `}</style>
     </div>
   );
