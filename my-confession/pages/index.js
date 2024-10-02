@@ -137,20 +137,9 @@ export default function Home() {
         }
         /* Adjust heart positions */
         .heart:nth-child(1) { left: 10%; }
-        .heart:nth-child(2) { left: 30%; }
         .heart:nth-child(3) { left: 50%; }
-        .heart:nth-child(4) { left: 70%; }
         .heart:nth-child(5) { left: 90%; }
-        .heart:nth-child(6) { left: 15%; }
-        .heart:nth-child(7) { left: 35%; }
-        .heart:nth-child(8) { left: 55%; }
-        .heart:nth-child(9) { left: 80%; }
-        .heart:nth-child(10) { left: 20%; }
-        .heart:nth-child(11) { left: 40%; }
-        .heart:nth-child(12) { left: 60%; }
-        .heart:nth-child(13) { left: 75%; }
-        .heart:nth-child(14) { left: 5%; }
-        .heart:nth-child(15) { left: 95%; }
+
       `}</style>
     </div>
   );
