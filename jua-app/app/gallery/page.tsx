@@ -29,8 +29,8 @@ const posts = [
 
 export default function InstagramGallery() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="bg-white border-b">
+    <div className="min-h-screen style={{ backgroundColor: '#b5c0d0' }}">
+      <header className=" border-b style={{ backgroundColor: '#eed3d9' }}">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center">
