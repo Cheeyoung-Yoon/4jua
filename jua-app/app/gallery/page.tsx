@@ -29,17 +29,21 @@ const posts = [
 
 export default function InstagramGallery() {
   return (
-    <div className="min-h-screen style={{ backgroundColor: '#b5c0d0' }}">
-      <header className=" border-b style={{ backgroundColor: '#eed3d9' }}">
+    <div className="min-h-screen" style={{ backgroundColor: '#b5c0d0' }}>
+      <header className=" border-b" style={{ backgroundColor: '#eed3d9' }}>
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center">
-              <span className="text-2xl font-bold">주아의 선물 창고</span>
+              <div>
+                <span className="text-2xl font-bold">주아의 선물 창고</span>
+                <br/>
+                <span className="text-l font-bold">-오빠의 선택을 기다리는 물건들...........</span>
+                </div>
             </div>
             <div className="flex items-center space-x-4">
               <Avatar>
                 <AvatarImage src="/placeholder-user.jpg" alt="User" />
-                <AvatarFallback>UN</AvatarFallback>
+                <AvatarFallback>Home</AvatarFallback>
               </Avatar>
             </div>
           </div>
