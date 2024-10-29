@@ -1,8 +1,10 @@
-import {  Send } from "lucide-react"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
+'use client'
+import { useState, useEffect, useRef } from "react";
+import { Send } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 
-const posts = [
+const initialPosts = [
   { id: 1, imageUrl: "/placeholder.svg?height=300&width=300", comments: [
     { user: "user1", text: "Great photo!" },
     { user: "user2", text: "Love this!" }
@@ -25,9 +27,59 @@ const posts = [
   { id: 6, imageUrl: "/placeholder.svg?height=300&width=300", comments: [
     { user: "user10", text: "Great work!" }
   ]},
-]
+];
 
 export default function InstagramGallery() {
+  const [posts, setPosts] = useState(initialPosts);
+  const [isFetching, setIsFetching] = useState(false);
+  const observerRef = useRef(null);
+
+  // Simulate fetching new posts
+  const fetchMorePosts = () => {
+    setIsFetching(true);
+    setTimeout(() => {
+      const newPosts = [
+        {
+          id: posts.length + 1,
+          imageUrl: "/placeholder.svg?height=300&width=300",
+          comments: [
+            { user: `user${posts.length + 1}`, text: "New comment!" }
+          ],
+        },
+        {
+          id: posts.length + 2,
+          imageUrl: "/placeholder.svg?height=300&width=300",
+          comments: [
+            { user: `user${posts.length + 2}`, text: "Another new comment!" }
+          ],
+        }
+      ];
+      setPosts((prevPosts) => [...prevPosts, ...newPosts]);
+      setIsFetching(false);
+    }, 1000);
+  };
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !isFetching) {
+          fetchMorePosts();
+        }
+      },
+      { threshold: 1.0 }
+    );
+
+    if (observerRef.current) {
+      observer.observe(observerRef.current);
+    }
+
+    return () => {
+      if (observerRef.current) {
+        observer.unobserve(observerRef.current);
+      }
+    };
+  }, [isFetching]);
+
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#b5c0d0' }}>
       <header className=" border-b" style={{ backgroundColor: '#eed3d9' }}>
@@ -38,7 +90,7 @@ export default function InstagramGallery() {
                 <span className="text-2xl font-bold">주아의 선물 창고</span>
                 <br/>
                 <span className="text-l font-bold">-오빠의 선택을 기다리는 물건들...........</span>
-                </div>
+              </div>
             </div>
             <div className="flex items-center space-x-4">
               <Avatar>
@@ -88,7 +140,12 @@ export default function InstagramGallery() {
             </div>
           ))}
         </div>
+
+        {/* Loader / Observer Element */}
+        <div ref={observerRef} className="text-center py-4">
+          {isFetching ? <p>Loading more posts...</p> : <p>Scroll to load more...</p>}
+        </div>
       </main>
     </div>
-  )
+  );
 }
