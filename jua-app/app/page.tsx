@@ -5,8 +5,14 @@ import { supabase } from '../lib/supabaseClient';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 
+interface Post {
+  id: number;
+  imageUrl: string;
+  comments: { user: string; text: string }[];
+}
+
 export default function Home() {
-  const [data, setData] = useState<any[]>([]);
+  const [data, setData] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
@@ -30,7 +36,7 @@ export default function Home() {
         if (error) {
           console.error('Error fetching data:', error.message);
         } else {
-          setData(data);
+          setData(data as Post[]);
         }
       };
 
@@ -71,7 +77,18 @@ export default function Home() {
           <a>
             {/* Supabase에서 가져온 데이터를 표시 */}
             {data.map((item) => (
-              <div key={item.id}>{item.name}</div>
+              <div key={item.id}>
+                <Image
+                  src={item.imageUrl}
+                  alt={`Post ${item.id}`}
+                  width={500}
+                  height={500}
+                  layout="responsive"
+                />
+                <p>{item.comments.map(comment => (
+                  <span key={comment.user}>{comment.user}: {comment.text}<br/></span>
+                ))}</p>
+              </div>
             ))}
           </a>
         </div>
