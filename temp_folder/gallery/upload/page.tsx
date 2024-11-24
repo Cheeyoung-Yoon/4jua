@@ -1,7 +1,7 @@
 // app/upload/page.tsx
 'use client'
 import { useState } from 'react';
-import { supabase } from '../../../lib/supabaseClient';
+import { supabase } from '../../../jua-app/lib/supabaseClient';
 import { useRouter } from 'next/navigation';
 
 export default function Upload() {
